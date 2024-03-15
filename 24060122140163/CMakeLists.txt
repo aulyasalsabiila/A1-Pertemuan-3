@@ -14,8 +14,8 @@ MACRO(COMPILE name)
     ADD_EXECUTABLE(${name} ${ARGN})
     IF(WIN32) 
         target_link_libraries(${name}
-            ${CMAKE_SOURCE_DIR}/../lib/libglfw3.a
-            ${CMAKE_SOURCE_DIR}/../lib/glew32s.lib
+            ${CMAKE_SOURCE_DIR}/lib/libglfw3.a
+            ${CMAKE_SOURCE_DIR}/lib/glew32s.lib
             # ${CMAKE_SOURCE_DIR}/libassimp-5.dll
             # glu32
             opengl32

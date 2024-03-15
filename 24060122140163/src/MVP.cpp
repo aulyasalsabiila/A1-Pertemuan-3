@@ -71,6 +71,9 @@ public:
 
         // TRANSFORM THE CUBE
         // TODO 1: PINDAHKAN CUBE INI KE TRACE 1 PERSEGI DI PLANE
+        cube_1->transform = glm::translate(cube_1->transform, vec3( 30, 5, 50));
+        cube_1->transform = glm::rotate(cube_1->transform, glm::radians(90.f), vec3( 0, 1, 0));
+        cube_1->transform = glm::scale(cube_1->transform, vec3( 10, 5, 10));  
 
         // LOAD CUBE SHADERS AND MODEL II
         shader = LoadShaders("res/shader/Textured.vs", "res/shader/Textured.fs");
@@ -78,13 +81,19 @@ public:
 
         // TRANSFORM THE CUBE
         // TODO 2: PINDAHKAN CUBE INI KE TRACE 2 PERSEGI DI PLANE
+        cube_2->transform = glm::translate(cube_2->transform, vec3(-40, 10, 30));
+        cube_2->transform = glm::rotate(cube_2->transform, glm::radians(180.f), vec3( 0, 1, 0));
+        cube_2->transform = glm::scale(cube_2->transform, vec3( 20, 10, 10));  
 
         // LOAD CUBE SHADERS AND MODEL III
         shader = LoadShaders("res/shader/Textured.vs", "res/shader/Textured.fs");
         cube_3 = new engine::Object("../res/obj/box.obj", "../res/bmp/box.bmp", shader, this);
 
         // TRANSFORM THE CUBE
-        // TODO 3: PINDAHKAN CUBE INI KE TRACE 2 PERSEGI DI PLANE
+        //TODO 3: PINDAHKAN CUBE INI KE TRACE 2 PERSEGI DI PLANE
+        cube_3->transform = glm::translate(cube_3->transform, vec3(40, 5, -20));
+        cube_3->transform = glm::rotate(cube_3->transform, glm::radians(135.f), vec3( 0, 1, 0));
+        cube_3->transform = glm::scale(cube_3->transform, vec3( 10, 5, 20));  
 
         // binding keys
         glfwSetKeyCallback(window, keyCallbackStatic);
@@ -115,18 +124,30 @@ public:
                 break;
             case CAMERA_MODE::PROJECTION_1:
                 // TODO 4: CREATE PROJECTION FOR PROJECTION_1 (See module)
-                ViewMatrix; // edit this
-                ProjectionMatrix; // edit this
+                ViewMatrix = glm::lookAt(
+                    vec3(60, 100, 20),
+                    vec3(20, 0, 60),
+                    up
+                );
+                ProjectionMatrix = glm::perspective<float>(glm::radians(45.f), aspect_ratio, 0.1f, 1000.0f);
                 break;  
             case CAMERA_MODE::PROJECTION_2:
                 // TODO 5: CREATE PROJECTION FOR PROJECTION_2 (See module)
-                ViewMatrix; // edit this
-                ProjectionMatrix; // edit this
+                ViewMatrix = glm::lookAt(
+                    vec3(-50, 100, 40),
+                    vec3(-50, 0, 10),
+                    up
+                );
+                ProjectionMatrix = glm::perspective<float>(glm::radians(45.f), aspect_ratio, 0.1f, 1000.0f);
                 break;
             case CAMERA_MODE::PROJECTION_3:
                 // TODO 6: CREATE PROJECTION FOR PROJECTION_3 (See module)
-                ViewMatrix; // edit this
-                ProjectionMatrix; // edit this
+                ViewMatrix  = glm::lookAt(
+                    vec3(80, 100, -60),
+                    vec3(30, 0, -10),
+                    up
+                );
+                ProjectionMatrix = glm::perspective<float>(glm::radians(45.f), aspect_ratio, 0.1f, 1000.0f);
                 break;
             case CAMERA_MODE::FREE_VIEW:
                 // Don't touch
