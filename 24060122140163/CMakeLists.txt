@@ -7,7 +7,6 @@ SET(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${PROJECT_BINARY_DIR}/../)
 
 # Add include directories
 INCLUDE_DIRECTORIES(include)
-INCLUDE_DIRECTORIES(${CMAKE_SOURCE_DIR}/../include)
 
 # to easily compile multiple singular executable
 MACRO(COMPILE name)
