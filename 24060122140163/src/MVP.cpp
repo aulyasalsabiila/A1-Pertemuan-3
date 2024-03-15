@@ -57,17 +57,18 @@ public:
     }
 
     void start() override {
+        
         // ======================== PLANE ========================
 
         // LOAD PLANE SHADERS AND MODEL
         GLuint shader = LoadShaders("res/shader/Textured.vs", "res/shader/Textured.fs");
-        plane = new engine::Object("../res/obj/plane.obj", "../res/bmp/plane_tugas.bmp", shader, this);
+        plane = new engine::Object("res/obj/plane.obj", "res/bmp/plane_tugas.bmp", shader, this);
 
         // ======================== CUBES ========================
 
         // LOAD CUBE SHADERS AND MODEL I
         shader = LoadShaders("res/shader/Textured.vs", "res/shader/Textured.fs");
-        cube_1 = new engine::Object("../res/obj/box.obj", "../res/bmp/box.bmp", shader, this);
+        cube_1 = new engine::Object("res/obj/box.obj", "res/bmp/box.bmp", shader, this);
 
         // TRANSFORM THE CUBE
         // TODO 1: PINDAHKAN CUBE INI KE TRACE 1 PERSEGI DI PLANE
@@ -77,7 +78,7 @@ public:
 
         // LOAD CUBE SHADERS AND MODEL II
         shader = LoadShaders("res/shader/Textured.vs", "res/shader/Textured.fs");
-        cube_2 = new engine::Object("../res/obj/box.obj", "../res/bmp/box.bmp", shader, this);
+        cube_2 = new engine::Object("res/obj/box.obj", "res/bmp/box.bmp", shader, this);
 
         // TRANSFORM THE CUBE
         // TODO 2: PINDAHKAN CUBE INI KE TRACE 2 PERSEGI DI PLANE
@@ -87,7 +88,7 @@ public:
 
         // LOAD CUBE SHADERS AND MODEL III
         shader = LoadShaders("res/shader/Textured.vs", "res/shader/Textured.fs");
-        cube_3 = new engine::Object("../res/obj/box.obj", "../res/bmp/box.bmp", shader, this);
+        cube_3 = new engine::Object("res/obj/box.obj", "res/bmp/box.bmp", shader, this);
 
         // TRANSFORM THE CUBE
         //TODO 3: PINDAHKAN CUBE INI KE TRACE 2 PERSEGI DI PLANE
@@ -156,7 +157,6 @@ public:
                 ProjectionMatrix = getProjectionMatrix();
                 break;
         }
-
         
         cube_1->render_with_projection();
         cube_2->render_with_projection();
@@ -195,6 +195,4 @@ private:
         MainScene* instance = static_cast<MainScene*>(glfwGetWindowUserPointer(window));
         instance->key_callback(window, key, scancode, action, mods);
     }
-    
-
 };
